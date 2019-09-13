@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>温湿度監視ツール</title>
+    {% from datetime import datetime %}
+    <script>
+
+    <!--
+        window.onload = function () {
+
+
+        var date = new Date()
+        var tmpList = []
+        var tmpData = {}
+        {% for temperature in temperatures %}
+            date = new Date({{temperature["x"].year}},{{temperature["x"].month}},{{temperature["x"].day}},{{temperature["x"].hour}},{{temperature["x"].minute}})
+            tmpData = {x: date, y: {{temperature["y"]}} }
+            tmpList.push(tmpData)
+        {% end %}
+
+        var hmdList = []
+        var hmdData = {}
+        {% for humidity in humidities %}
+            date = new Date({{humidity["x"].year}},{{humidity["x"].month}},{{humidity["x"].day}},{{humidity["x"].hour}},{{humidity["x"].minute}})
+            hmdData = {x:date,y:{{humidity["y"]}}}
+            hmdList.push(hmdData)
+        {% end %}
+
+        var chart = new CanvasJS.Chart("chartContainer", {
+        animationEnabled: false,
+        title:{
+            text: "temperature and humidity monitoring"
+        },
+        axisY: {
+            title: "value"
+        },
+        data: [{
+            name: "Humidity",
+            type: "splineArea",
+            color: "rgba(54,158,255,.7)",
+            markerSize: 5,
+            xValueFormatString: "MM/DD/H:mm  ",
+            yValueFormatString: "#,##0.##％",
+            dataPoints: hmdList
+        },{
+            name: "Temperature",
+            type: "splineArea",
+            color: "rgba(50,203,0,.7)",
+            markerSize: 5,
+            xValueFormatString: "MM/DD/H:mm  ",
+            yValueFormatString: "#,##0.##℃",
+            dataPoints: tmpList
+        }]
+        });
+        chart.render();
+
+        }
+
+    -->
+    </script>
+</head>
+<body>
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
+</html>
